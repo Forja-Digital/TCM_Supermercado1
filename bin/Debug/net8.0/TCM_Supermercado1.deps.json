@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "TCM_Supermercado1/1.0.0": {
+        "runtime": {
+          "TCM_Supermercado1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TCM_Supermercado1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

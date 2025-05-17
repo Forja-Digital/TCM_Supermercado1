@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TCM_Supermercado1.props" />
+</Project>

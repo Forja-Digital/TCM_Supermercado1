@@ -1,0 +1,28 @@
+﻿<link href="~/css/Login.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Tudo no Carrinho";
+}
+
+<div class="text-center">
+    <h1 class="display-4"> Login </h1>
+    <br>
+    
+    <br>
+    <section class="Login">
+        <h2 >Digite seus dados</h2>
+        <div id=digito>
+           <input type="text" placeholder="Usuario">
+           <br>
+           <input type="text" placeholder="Digite sua Senha">
+        </div>
+        <div>
+            <input type="button" value="Entrar">
+            <br>
+            <input type="button" value="Cadastrar">
+        </div>
+        <p>
+            <a asp-controller="Login" asp-action="RecuperarSenha" class="alert-info">Recuperar Senha</a>
+        </p>
+    </section> 
+  
+</div>
