@@ -1,5 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData = ["Title"] = "Recuperar Senha";
 }
+<div class="text-center">
+    <h1 class="display-4"> Login </h1>
+    <br>
+    
+    <br>
+    <section class="Login">
+        <h2 >Digite seus dados</h2>
+        <div id=digito>
+           <input type="text" placeholder="Usuario">
+           <br>
+           <input type="text" placeholder="Digite sua Senha">
+        </div>
+        <div>
+            <input type="button" value="Enviar">
+            <br>
+        <p>
+            <a asp-controller="Home" asp-action="Login" id="btnLogin">Login</a>
+        </p>
+    </section> 
+  
+</div>

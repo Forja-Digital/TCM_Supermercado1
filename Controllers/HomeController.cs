@@ -18,7 +18,7 @@ namespace TCM_Supermercado1.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult RecuperarSenha()
         {
             return View();
         }

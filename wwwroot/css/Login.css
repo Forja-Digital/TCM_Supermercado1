@@ -21,3 +21,8 @@ body {
 #digito{
     padding: 10px;
 }
+
+#btnRecuperar{
+    background-color:white;
+    color:peru;
+}
