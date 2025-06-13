@@ -1,7 +1,13 @@
+using TCM_Supermercado1.Repositorio;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+//Injeção de depêndencia
+
+builder.Services.AddScoped<LoginRepositorio>();
 
 var app = builder.Build();
 
