@@ -1,0 +1,82 @@
+create database tcm2bds;
+
+use tcm2bds;
+-- Criando as tabeals do banco de dados
+
+ create table tb_estado(
+	cod_estado int auto_increment primary key,
+    UF varchar(40)
+ );
+ 
+create table tb_categoriaProd(
+	cod_tipo int primary key auto_increment,
+    nome_tipo varchar(20),
+    descricao_tipo varchar(60)
+);
+
+create table tb_funcionario(
+	cod_funcionario int auto_increment primary key,
+    nome_funcionario varchar(60),
+    email_funcionario varchar(100),
+    senha_funcionario varchar(50)
+);
+
+create table tb_fornecedor(
+	cnpj varchar(14) primary key,
+    nome_fornecedor varchar(100),
+    cod_estado int,
+    endereco_fornecedor varchar(120),
+    complemento_fornecedor varchar(50),
+    tel1_fornecedor varchar(11),
+    tel2_fornecedor varchar(11),
+    email1_fornecedor varchar(60),
+    email2_fornecedor varchar(60),
+    foreign key (cod_estado) references tb_estado(cod_estado)
+);
+
+create table tb_produto(
+	cod_produto int primary key auto_increment,
+    cod_tipo int,
+    cnpj varchar(14),
+    preco_produto double,
+    descricao_produto varchar(30),
+    foreign key (cod_tipo) references tb_categoriaProd(cod_tipo),
+    foreign key (cnpj) references tb_fornecedor(cnpj)
+);
+
+create table tb_cliente(
+	cod_cliente int primary key auto_increment,
+    nome_cliente varchar(50),
+    tel1_cliente varchar(11),
+    email1_cliente varchar(60)
+);
+
+create table tb_pedido(
+    cod_pedido int auto_increment primary key, 
+    cod_funcionario int,
+    data_pedido datetime,            
+    cod_cliente int,                  
+    total decimal(10, 2),            
+    forma_pagamento varchar(60),
+    cod_estado int,
+    endereco_pedido varchar(120),
+    complemento_pedido varchar(50),
+    foreign key (cod_funcionario) references tb_funcionario(cod_funcionario), 
+    foreign key (cod_estado) references tb_estado(cod_estado),            
+    foreign key (cod_cliente) references tb_cliente(cod_cliente)
+);
+
+create table tb_item_pedido (
+    cod_itempedido  int auto_increment primary key,
+    cod_pedido int,                    
+    cod_produto int,                   
+    quantidade int,                   
+    preco_unitario decimal(10, 2),    
+    total_item decimal(10, 2),        
+    foreign key (cod_pedido) references tb_pedido(cod_pedido),
+    foreign key (cod_produto) references tb_produto(cod_produto)
+);
+
+
+
+

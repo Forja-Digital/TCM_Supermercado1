@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TCM_Supermercado1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eed6ac388896b2033f45c8fdba25d9d1834c4aaf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44b19b4bf791162e80e79db9577c5c8b8f19b449")]
 [assembly: System.Reflection.AssemblyProductAttribute("TCM_Supermercado1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TCM_Supermercado1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
