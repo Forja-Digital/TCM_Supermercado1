@@ -26,7 +26,7 @@ namespace TCM_Supermercado1.Controllers
             if (funcionario != null && funcionario.senha_funcionario == senha)
             {
                 // Autenticação bem-sucedida
-                return RedirectToAction("RecuperarSenha", "Home");
+                return RedirectToAction("RecuperarSenha", "Login");
             }
 
             ModelState.AddModelError("", "Email ou senha inválidos.");
@@ -34,6 +34,8 @@ namespace TCM_Supermercado1.Controllers
             //retorna view Login 
             return View();
         }
+
+
 
         [HttpGet]
         public IActionResult RecuperarSenha()
@@ -47,37 +49,48 @@ namespace TCM_Supermercado1.Controllers
             Console.WriteLine($"Email recebido: {email}");
 
             var funcionario = _loginRepositorio.ObterFuncionario(email);
+
             if (funcionario == null)
             {
                 return NotFound();
             }
-            return RedirectToAction(nameof(Login));
+
+            return RedirectToAction(nameof(NovaSenha));
         }
 
-        //[HttpPost]
-        //public IActionResult EditarSenha(String email, [Bind("email_funcionario, senha_funcionario")] Funcionario funcionario)
-        //{
-        //    if (email != funcionario.email_funcionario)
-        //    {
-        //        return BadRequest();
-        //    }
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            if (_loginRepositorio.Editar(funcionario))
-        //            {
-        //                return RedirectToAction(nameof(Login));
-        //            }
-        //        }
-        //        catch (Exception)
-        //        {
-        //            ModelState.AddModelError("", "Ocorreu um erro ao editar.");
-        //            return View();
-        //        }
-        //    }
-        //    return View();
-        //}
+
+        [HttpGet]
+        public IActionResult NovaSenha(string email)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult NovaSenha(String email, [Bind("email_funcionario, senha_funcionario")] Funcionario funcionario)
+        {
+            //if (email != funcionario.email_funcionario)
+            //{
+            //    return BadRequest();
+            //}
+
+
+            //if (ModelState.IsValid)
+            //{
+            //    try
+            //    {
+            //        if (_loginRepositorio.Editar(funcionario))
+            //        {
+            //            return RedirectToAction(nameof(Login));
+            //        }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        ModelState.AddModelError("", "Ocorreu um erro ao editar.");
+            //        return View();
+            //    }
+            //}
+            return RedirectToAction("Login", "Login"); ;
+        }
 
     }
 }
