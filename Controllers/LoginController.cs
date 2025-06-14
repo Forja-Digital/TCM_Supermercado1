@@ -46,7 +46,6 @@ namespace TCM_Supermercado1.Controllers
         [HttpPost]
         public IActionResult RecuperarSenha(String email)
         {
-            Console.WriteLine($"Email recebido: {email}");
 
             var funcionario = _loginRepositorio.ObterFuncionario(email);
 
@@ -55,40 +54,42 @@ namespace TCM_Supermercado1.Controllers
                 return NotFound();
             }
 
+            TempData["Email"] = email;
+
             return RedirectToAction(nameof(NovaSenha));
+
         }
 
 
         [HttpGet]
         public IActionResult NovaSenha(string email)
         {
+            TempData.Keep("Email");
+
             return View();
         }
 
         [HttpPost]
-        public IActionResult NovaSenha(String email, [Bind("email_funcionario, senha_funcionario")] Funcionario funcionario)
+        public IActionResult NovaSenha([Bind("senha_funcionario")] Funcionario funcionario)
         {
-            //if (email != funcionario.email_funcionario)
-            //{
-            //    return BadRequest();
-            //}
+            var email = TempData["Email"] as string;
+            funcionario.email_funcionario = email;
+           
+                try
+                {
+                    if (_loginRepositorio.Editar(funcionario))
+                    {
+                        return RedirectToAction(nameof(Login));
+                    }
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError("", "Ocorreu um erro ao editar.");
+                    return View();
+                }
+            
 
-
-            //if (ModelState.IsValid)
-            //{
-            //    try
-            //    {
-            //        if (_loginRepositorio.Editar(funcionario))
-            //        {
-            //            return RedirectToAction(nameof(Login));
-            //        }
-            //    }
-            //    catch (Exception)
-            //    {
-            //        ModelState.AddModelError("", "Ocorreu um erro ao editar.");
-            //        return View();
-            //    }
-            //}
+            TempData["Mensagem"] = "Senha alterada com sucesso!";
             return RedirectToAction("Login", "Login"); ;
         }
 

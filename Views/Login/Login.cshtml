@@ -17,6 +17,10 @@
             <br>
             <input type="text" name="senha" placeholder="Digite sua Senha">
         </div>
+            @if (TempData["Mensagem"] != null)
+            {
+                <div class="alert alert-success">@TempData["Mensagem"]</div>
+            }
         <div>
             <button type="submit" class="btn btn-primary">Entrar</button>
             <br>

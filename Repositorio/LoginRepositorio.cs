@@ -33,5 +33,36 @@ namespace TCM_Supermercado1.Repositorio
                 }
             }
         }
+
+
+        public bool Editar(Funcionario funcionario) 
+        {
+
+            try
+            {
+                using (var conexao = new MySqlConnection(_conexaoMySQL))
+                {
+                    conexao.Open();
+                    MySqlCommand cmd = new(" SET SQL_SAFE_UPDATES = 0; update tb_funcionario set senha_funcionario = @senha where email_funcionario= @email; SET SQL_SAFE_UPDATES = 1;", conexao);
+                    cmd.Parameters.Add("@senha", MySqlDbType.VarChar).Value = funcionario.senha_funcionario;
+                    cmd.Parameters.Add("@email", MySqlDbType.VarChar).Value = funcionario.email_funcionario;
+                    int linhasAfetadas = cmd.ExecuteNonQuery();
+                    return linhasAfetadas > 0;
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                Console.WriteLine($"Erro ao atualizar a senha: {ex.Message}");
+                return false;
+
+            }
+
+
+        }
+
+
+
+
     }
 }
