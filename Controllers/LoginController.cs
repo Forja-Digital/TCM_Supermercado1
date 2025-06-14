@@ -35,21 +35,26 @@ namespace TCM_Supermercado1.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult RecuperarSenha()
         {
             return View();
         }
-        //public IActionResult RecuperarSenha(String email)
-        //{
-        //    var funcionario = _loginRepositorio.ObterFuncionario(email);
-        //    if (funcionario == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(funcionario);
-        //}
+
+        [HttpPost]
+        public IActionResult RecuperarSenha(String email)
+        {
+            Console.WriteLine($"Email recebido: {email}");
+
+            var funcionario = _loginRepositorio.ObterFuncionario(email);
+            if (funcionario == null)
+            {
+                return NotFound();
+            }
+            return RedirectToAction(nameof(Login));
+        }
+
         //[HttpPost]
-        //[ValidateAntiForgeryToken]
         //public IActionResult EditarSenha(String email, [Bind("email_funcionario, senha_funcionario")] Funcionario funcionario)
         //{
         //    if (email != funcionario.email_funcionario)
@@ -62,7 +67,7 @@ namespace TCM_Supermercado1.Controllers
         //        {
         //            if (_loginRepositorio.Editar(funcionario))
         //            {
-        //                return RedirectToAction(nameof(Index));
+        //                return RedirectToAction(nameof(Login));
         //            }
         //        }
         //        catch (Exception)

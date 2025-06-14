@@ -16,11 +16,8 @@
         <form asp-action="RecuperarSenha" method="post" class="login-form">
         <h2>Digite seus dados</h2>
         <div id=digito>
-                <input asp-for="email_funcionario" class="form-control" placeholder="Email cadastrado" />
+                <input name="email" type="email" class="form-control" placeholder="Email cadastrado"/>
                 <span asp-validation-for="email_funcionario" class="text-danger"></span>
-                <br/>
-                <input asp-for="senha_funcionario" class="form-control" type="password" placeholder="Nova senha" />
-                <span asp-validation-for="senha_funcionario" class="text-danger"></span>
         </div>
         <div>
             <input type="submit" value="Recuperar senha">
