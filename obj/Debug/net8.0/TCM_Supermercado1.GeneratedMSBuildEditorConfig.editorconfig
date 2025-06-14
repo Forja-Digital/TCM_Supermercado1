@@ -24,12 +24,12 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/minam/OneDrive/Área de Trabalho/TCM_Supermercado1/Views/Home/RecuperarSenha.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWN1cGVyYXJTZW5oYS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/minam/OneDrive/Área de Trabalho/TCM_Supermercado1/Views/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/minam/OneDrive/Área de Trabalho/TCM_Supermercado1/Views/Login/RecuperarSenha.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cUmVjdXBlcmFyU2VuaGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/minam/OneDrive/Área de Trabalho/TCM_Supermercado1/Views/Shared/Error.cshtml]

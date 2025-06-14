@@ -1,0 +1,35 @@
+﻿@model TCM_Supermercado1.Models.Funcionario;
+
+@{
+    ViewData["Title"] = "Recuperar Senha";
+}
+<!--Conexões-->
+<link href="~/css/recuperar.css" rel="stylesheet" />
+<script src="~/js/site.js"></script>
+
+<div class="text-center">
+    <h1 class="display-4">Recupere sua senha</h1>
+    <br>
+
+    <br>
+    <section class="Recuperar">
+        <form asp-action="RecuperarSenha" method="post" class="login-form">
+        <h2>Digite seus dados</h2>
+        <div id=digito>
+                <input asp-for="email_funcionario" class="form-control" placeholder="Email cadastrado" />
+                <span asp-validation-for="email_funcionario" class="text-danger"></span>
+                <br/>
+                <input asp-for="senha_funcionario" class="form-control" type="password" placeholder="Nova senha" />
+                <span asp-validation-for="senha_funcionario" class="text-danger"></span>
+        </div>
+        <div>
+            <input type="submit" value="Recuperar senha">
+            <br>
+            <p>
+                <a asp-controller="Login" asp-action="Login" id="btnLogin">Retornar a login</a>
+            </p>
+        </div>
+        </form>
+    </section>
+
+</div>
