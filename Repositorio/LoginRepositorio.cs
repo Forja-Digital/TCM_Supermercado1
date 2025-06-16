@@ -7,6 +7,7 @@ namespace TCM_Supermercado1.Repositorio
     public class LoginRepositorio(IConfiguration configuration)
     {
         private readonly string _conexaoMySQL = configuration.GetConnectionString("conexaoMySQL");
+
         public Funcionario ObterFuncionario(string email)
         {
             using (var conexao = new MySqlConnection(_conexaoMySQL))
