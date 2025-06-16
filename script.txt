@@ -4,25 +4,25 @@ use tcm2bds;
 -- Criando as tabeals do banco de dados
 
  create table tb_estado(
-	cod_estado int auto_increment primary key,
+    cod_estado int auto_increment primary key,
     UF varchar(40)
  );
  
 create table tb_categoriaProd(
-	cod_tipo int primary key auto_increment,
+    cod_tipo int primary key auto_increment,
     nome_tipo varchar(20),
     descricao_tipo varchar(60)
 );
 
 create table tb_funcionario(
-	cod_funcionario int auto_increment primary key,
+    cod_funcionario int auto_increment primary key,
     nome_funcionario varchar(60),
     email_funcionario varchar(100),
     senha_funcionario varchar(50)
 );
 
 create table tb_fornecedor(
-	cnpj varchar(14) primary key,
+    cnpj varchar(14) primary key,
     nome_fornecedor varchar(100),
     cod_estado int,
     endereco_fornecedor varchar(120),
@@ -35,17 +35,19 @@ create table tb_fornecedor(
 );
 
 create table tb_produto(
-	cod_produto int primary key auto_increment,
+    cod_produto int primary key auto_increment,
     cod_tipo int,
     cnpj varchar(14),
+    nome_produto varchar(150),
     preco_produto double,
     descricao_produto varchar(30),
+    quantidade_produto int,
     foreign key (cod_tipo) references tb_categoriaProd(cod_tipo),
     foreign key (cnpj) references tb_fornecedor(cnpj)
 );
 
 create table tb_cliente(
-	cod_cliente int primary key auto_increment,
+    cod_cliente int primary key auto_increment,
     nome_cliente varchar(50),
     tel1_cliente varchar(11),
     email1_cliente varchar(60)
