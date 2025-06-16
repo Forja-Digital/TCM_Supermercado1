@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TCM_Supermercado1.Models.Produto>
+
+<p>
+    <a asp-controller="Produto" asp-action="CadastrarProduto" class="btn btn-primary">Cadastra Produto</a>
+</p>
+
+<table class="table custom-table">
+    <thead>
+        <tr>
+            <th>
+                <p>Código do produto</p>
+            </th>
+            <th>
+                <p>Categoria</p>
+            </th>
+            <th>
+                <p>Fornecedor(Cnpj)</p>
+            </th>
+            <th>
+                <p>Nome</p>
+            </th>
+            <th>
+                <p>Preço</p>
+            </th>
+            <th>
+                <p>Descrição</p>
+            </th>
+            <th>
+                <p>Quantidade</p>
+            </th>
+            <th class="text-center">Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cod_prod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome_prod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descricao_prod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.preco_prod)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.quantidade_prod)
+                </td>
+                <td class="text-center">
+                    <a asp-controller="Produto" asp-action="EditarProduto" asp-route-id="@item.cod_prod" class="btn btn-sm btn-warning">Editar</a>
+                    <span>|</span>
+                    <a asp-controller="Produto" asp-action="ExcluirProduto" asp-route-id="@item.cod_prod"
+                       onclick="return confirm('Deseja realmente Excluir este item?');" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
