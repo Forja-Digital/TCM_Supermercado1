@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 //Injeção de depêndencia
 
 builder.Services.AddScoped<LoginRepositorio>();
+builder.Services.AddScoped<ProdutoRepositorio>();
 
 var app = builder.Build();
 

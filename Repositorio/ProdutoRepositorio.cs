@@ -28,8 +28,8 @@ namespace TCM_Supermercado1.Repositorio
                     Produtolist.Add(
                                 new Produto
                                 {
-                                    cod_produto = Convert.ToInt32(dr["cod_prod"]),
-                                    cod_tipo = Convert.ToInt32(dr["cod_tipo"]),
+                                    cod_produto = Convert.ToInt32(dr["cod_produto"]),
+                                    cod_categoria = Convert.ToInt32(dr["cod_categoria"]),
                                     cnpj = ((string)dr["cnpj"]),
                                     nome_produto = ((string)dr["nome_produto"]),
                                     preco_produto = Convert.ToDouble(dr["preco_produto"]),

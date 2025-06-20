@@ -3,7 +3,7 @@
     public class Produto
     {
         public int cod_produto { get; set; } 
-        public int cod_tipo { get; set; } 
+        public int cod_categoria { get; set; } 
         public String? cnpj { get; set; }
         public String? nome_produto { get; set; }
         public double? preco_produto { get; set; }

@@ -26,7 +26,7 @@ namespace TCM_Supermercado1.Controllers
             if (funcionario != null && funcionario.senha_funcionario == senha)
             {
                 // Autenticação bem-sucedida
-                return RedirectToAction("RecuperarSenha", "Login");
+                return RedirectToAction("Index", "Produto");
             }
 
             ModelState.AddModelError("", "Email ou senha inválidos.");
