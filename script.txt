@@ -4,25 +4,25 @@ use tcm2bds;
 -- Criando as tabeals do banco de dados
 
  create table tb_estado(
-    cod_estado int auto_increment primary key,
-    UF varchar(40)
+	cod_estado int auto_increment primary key,
+    UF char(2)
  );
  
 create table tb_categoriaProd(
-    cod_tipo int primary key auto_increment,
-    nome_tipo varchar(20),
-    descricao_tipo varchar(60)
+	cod_categoria int primary key auto_increment,
+    nome_categoria varchar(20),
+    descricao_categoria varchar(60)
 );
 
 create table tb_funcionario(
-    cod_funcionario int auto_increment primary key,
+	cod_funcionario int auto_increment primary key,
     nome_funcionario varchar(60),
     email_funcionario varchar(100),
     senha_funcionario varchar(50)
 );
 
 create table tb_fornecedor(
-    cnpj varchar(14) primary key,
+	cnpj varchar(14) primary key,
     nome_fornecedor varchar(100),
     cod_estado int,
     endereco_fornecedor varchar(120),
@@ -35,19 +35,19 @@ create table tb_fornecedor(
 );
 
 create table tb_produto(
-    cod_produto int primary key auto_increment,
-    cod_tipo int,
+	cod_produto int primary key auto_increment,
+    cod_categoria int,
     cnpj varchar(14),
     nome_produto varchar(150),
     preco_produto double,
     descricao_produto varchar(30),
     quantidade_produto int,
-    foreign key (cod_tipo) references tb_categoriaProd(cod_tipo),
+    foreign key (cod_categoria) references tb_categoriaProd(cod_categoria),
     foreign key (cnpj) references tb_fornecedor(cnpj)
 );
 
 create table tb_cliente(
-    cod_cliente int primary key auto_increment,
+	cod_cliente int primary key auto_increment,
     nome_cliente varchar(50),
     tel1_cliente varchar(11),
     email1_cliente varchar(60)
@@ -58,7 +58,7 @@ create table tb_pedido(
     cod_funcionario int,
     data_pedido datetime,            
     cod_cliente int,                  
-    total decimal(10, 2),            
+    total double,            
     forma_pagamento varchar(60),
     cod_estado int,
     endereco_pedido varchar(120),
@@ -73,12 +73,89 @@ create table tb_item_pedido (
     cod_pedido int,                    
     cod_produto int,                   
     quantidade int,                   
-    preco_unitario decimal(10, 2),    
-    total_item decimal(10, 2),        
+    preco_unitario double,    
+    total_item double,        
     foreign key (cod_pedido) references tb_pedido(cod_pedido),
     foreign key (cod_produto) references tb_produto(cod_produto)
 );
 
+-- Cadastrando um usuário de teste
+insert into tb_funcionario values (null, 'teste', 'email@email.com', '789');
+select * from tb_funcionario;
 
+-- Cadastrando valores na tabela estado
+insert into tb_estado (UF) values 
+('AC'),
+('AL'),
+('AP'),
+('AM'),
+('BA'),
+('CE'),
+('DF'),
+('ES'),
+('GO'),
+('MA'),
+('MT'),
+('MS'),
+('MG'),
+('PA'),
+('PB'),
+('PR'),
+('PE'),
+('PI'),
+('RJ'),
+('RN'),
+('RS'),
+('RO'),
+('RR'),
+('SC'),
+('SP'),
+('SE'),
+('TO');
+select * from tb_estado;
 
+-- Cadastrando um fornecedor
+insert into tb_fornecedor (
+    cnpj,
+    nome_fornecedor,
+    cod_estado,
+    endereco_fornecedor,
+    complemento_fornecedor,
+    tel1_fornecedor,
+    tel2_fornecedor,
+    email1_fornecedor,
+    email2_fornecedor
+) values (
+    '12345678000195',
+    'Fornecedor Exemplo LTDA',
+    25,
+    'Rua das Flores, 123',
+    'Sala 45 - 4º andar',
+    '11987654321',
+    '1133224455',
+    'contato@fornecedorexemplo.com.br',
+    'suporte@fornecedorexemplo.com.br'
+);
+select * from tb_fornecedor;
 
+-- Cadastrando uma categoria de produto
+insert into tb_categoriaProd values (null, 'Material escolar', 'Materiais de escola');
+select * from tb_categoriaProd;
+
+-- Cadastrando um produto
+INSERT INTO tb_produto (
+    cod_categoria,
+    cnpj,
+    nome_produto,
+    preco_produto,
+    descricao_produto,
+    quantidade_produto
+) VALUES (
+    1,
+    '12345678000195',
+    'lapiseira 0.7mm',
+    9.90,
+    'lapiseira escolar',
+    50
+);
+select * from tb_produto;
