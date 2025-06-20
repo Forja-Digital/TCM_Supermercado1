@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TCM_Supermercado1.Models.Produto>
+﻿@model IEnumerable<TCM_Supermercado1.Models.ProdutoLista>
 
 <p>
     <a asp-controller="Produto" asp-action="CadastrarProduto" class="btn btn-primary">Cadastra Produto</a>
@@ -14,7 +14,7 @@
                 <p>Categoria</p>
             </th>
             <th>
-                <p>Fornecedor(Cnpj)</p>
+                <p>Fornecedor</p>
             </th>
             <th>
                 <p>Nome</p>
@@ -33,29 +33,29 @@
     </thead>
     <tbody>
 
-        @foreach (var produto in Model)
+        @foreach (var produtolista in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.cod_produto)
+                    @Html.DisplayFor(modelItem => produtolista.cod_produto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.cod_categoria)
+                    @Html.DisplayFor(modelItem => produtolista.nome_categoria)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.cnpj)
+                    @Html.DisplayFor(modelItem => produtolista.nome_fornecedor)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.nome_produto)
+                    @Html.DisplayFor(modelItem => produtolista.nome_produto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.preco_produto)
+                    @Html.DisplayFor(modelItem => produtolista.preco_produto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.descricao_produto)
+                    @Html.DisplayFor(modelItem => produtolista.descricao_produto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => produto.quantidade_produto)
+                    @Html.DisplayFor(modelItem => produtolista.quantidade_produto)
                 </td>
                 @* <td class="text-center"> *@
                 @*     <a asp-controller="Produto" asp-action="EditarProduto" asp-route-id="@item.cod_prod" class="btn btn-sm btn-warning">Editar</a> *@
