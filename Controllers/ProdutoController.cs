@@ -16,7 +16,11 @@ namespace TCM_Supermercado1.Controllers
         {
             return View(_produtoRepositorio.TodosProdutos());
         }
-
-
+        [HttpGet]
+        public IActionResult Cadastrar()
+        {
+            ViewBag.Fornecedores = 
+            return View();
+        }
     }
 }
