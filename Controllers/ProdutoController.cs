@@ -1,6 +1,7 @@
 ﻿using TCM_Supermercado1.Models;
 using Microsoft.AspNetCore.Mvc;
 using TCM_Supermercado1.Repositorio;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace TCM_Supermercado1.Controllers
 {
@@ -17,9 +18,10 @@ namespace TCM_Supermercado1.Controllers
             return View(_produtoRepositorio.TodosProdutos());
         }
         [HttpGet]
-        public IActionResult Cadastrar()
+        public IActionResult CadastrarProduto()
         {
-            ViewBag.Fornecedores = 
+            ViewBag.Categorias = new SelectList(_produtoRepositorio.TodasCategorias(), "cod_categoria", "nome_categoria");
+            ViewBag.Fornecedores = new SelectList(_produtoRepositorio.TodosFornecedores(), "cnpj", "nome_fornecedor");
             return View();
         }
     }

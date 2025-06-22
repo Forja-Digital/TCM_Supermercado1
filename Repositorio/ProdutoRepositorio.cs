@@ -41,6 +41,52 @@ namespace TCM_Supermercado1.Repositorio
             }
         }
 
+        public IEnumerable<Fornecedor> TodosFornecedores()
+        {
+            List<Fornecedor> fornecedorList = new List<Fornecedor>();
 
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT cnpj, nome_fornecedor FROM tb_fornecedor", conexao);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    fornecedorList.Add(new Fornecedor
+                    {
+                        cnpj = reader["cnpj"].ToString(),
+                        nome_fornecedor = reader["nome_fornecedor"].ToString()
+                    });
+                }
+
+                conexao.Close();
+                return fornecedorList;
+            }
+        }
+
+        public IEnumerable<Categoria> TodasCategorias()
+        {
+            List<Categoria> categoriaList = new List<Categoria>();
+
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT cod_categoria, nome_categoria FROM tb_categoriaProd", conexao);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    categoriaList.Add(new Categoria
+                    {
+                        cod_categoria = Convert.ToInt32(reader["cod_categoria"]),
+                        nome_categoria = reader["nome_categoria"].ToString()
+                    });
+                }
+
+                conexao.Close();
+                return categoriaList;
+            }
+        }
     }
 }
