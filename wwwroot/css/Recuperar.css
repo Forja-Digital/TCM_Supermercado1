@@ -4,20 +4,35 @@
 
 .display-4{
     color: darkorange;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Arial;
 }
 
 .Recuperar{
     background-color: seagreen;
     color: darkorange;
-    width: 30%;
+    width: 40%;
     height: 250px;
     padding: initial;
     border-radius: 5px;
     margin: auto;
+    text-align: center;
+}
+
+#email{
+    width: 50%;
+    margin-top:30px;
+}
+
+#recuperar{
+    background-color:dodgerblue;
+    border-color:dodgerblue;
+    color:white;
+    margin-top:10px;
+    width:50%;
+    height:20%;
 }
 
 #btnLogin{
-    background-color:white;
-    color:peru;
+    color:antiquewhite;
+    margin-top:20px;
 }

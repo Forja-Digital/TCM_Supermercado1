@@ -12,7 +12,7 @@
     <section class="Login">
         <form asp-action="Login" method="post" class="login-form">
         <h2>Digite seus dados</h2>
-        <div id=digito>
+        <div id=informacoes>
             <input type="text" name="email" placeholder="Email">
             <br>
             <input type="password" name="senha" placeholder="Digite sua Senha">
@@ -26,7 +26,7 @@
         <div>
             <button type="submit" class="btn btn-primary">Entrar</button>
             <br>
-            <input type="button" value="Cadastrar">
+                <button type="button" id=btnCadastro>Cadastrar</button>
         </div>
         <p>
             <a asp-controller="Login" asp-action="RecuperarSenha" id="btnRecuperar">Recuperar Senha</a>
