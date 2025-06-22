@@ -38,6 +38,12 @@ namespace TCM_Supermercado1.Controllers
             ViewBag.Fornecedores = new SelectList(_produtoRepositorio.TodosFornecedores(), "cnpj", "nome_fornecedor");
             return View(produto);
         }
+        public IActionResult ExcluirProduto(int id)
+        {
+            _produtoRepositorio.Excluir(id);
+
+            return RedirectToAction(nameof(Index));
+        }
 
     }
 }

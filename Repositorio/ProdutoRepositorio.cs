@@ -105,6 +105,18 @@ namespace TCM_Supermercado1.Repositorio
                 conexao.Close();
             }
         }
+        public void Excluir(int Id)
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("delete from tb_produto where cod_produto=@codigo", conexao);
+                cmd.Parameters.AddWithValue("@codigo", Id);
+                int i = cmd.ExecuteNonQuery();
+                conexao.Close();
+            }
+        }
 
     }
 }

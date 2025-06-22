@@ -57,12 +57,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => produtolista.quantidade_produto)
                 </td>
-                @* <td class="text-center"> *@
-                @*     <a asp-controller="Produto" asp-action="EditarProduto" asp-route-id="@item.cod_prod" class="btn btn-sm btn-warning">Editar</a> *@
-                @*     <span>|</span> *@
-                @*     <a asp-controller="Produto" asp-action="ExcluirProduto" asp-route-id="@item.cod_prod" *@
-                @*        onclick="return confirm('Deseja realmente Excluir este item?');" class="btn btn-sm btn-danger">Excluir</a> *@
-                @* </td> *@
+                 <td class="text-center">
+                    <a asp-controller="Produto" asp-action="EditarProduto" asp-route-id="@produtolista.cod_produto" class="btn btn-sm btn-warning">Editar</a>
+                    <span>|</span> 
+                     <a asp-controller="Produto" asp-action="ExcluirProduto" asp-route-id="@produtolista.cod_produto" 
+                        onclick="return confirm('Deseja realmente Excluir este item?');" class="btn btn-sm btn-danger">Excluir</a> 
+                 </td> 
             </tr>
         }
 
