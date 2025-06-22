@@ -81,6 +81,8 @@ create table tb_item_pedido (
 
 -- Cadastrando um usuário de teste
 insert into tb_funcionario values (null, 'teste', 'email@email.com', '789');
+insert into tb_funcionario values (null, 'teste', 'tutuinho_arthur@email.com', 'Tutinho10');
+update tb_funcionario set nome_funcionario= 'Reitutinho' where cod_funcionario=3; 
 select * from tb_funcionario;
 
 -- Cadastrando valores na tabela estado

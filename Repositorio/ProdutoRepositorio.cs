@@ -10,6 +10,32 @@ namespace TCM_Supermercado1.Repositorio
 
         private readonly string _conexaoMySQL = configuration.GetConnectionString("conexaoMySQL");
 
+        public Produto ObterProduto(int id)
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * from tb_produto where cod_produto=@codigo ", conexao);
+                cmd.Parameters.AddWithValue("@codigo", id);
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                MySqlDataReader dr;
+                Produto produto = new Produto();
+                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+                while (dr.Read())
+                {
+
+                    produto.cod_produto = Convert.ToInt32(dr["cod_produto"]);
+                    produto.cod_categoria = Convert.ToInt32(dr["cod_categoria"]);
+                    produto.cnpj = (string)(dr["cnpj"]);
+                    produto.nome_produto = ((string)dr["nome_produto"]);
+                    produto.preco_produto = Convert.ToDouble(dr["preco_produto"]);
+                    produto.descricao_produto = ((string)dr["descricao_produto"]);
+                    produto.quantidade_produto = Convert.ToInt32(dr["quantidade_produto"]);
+                }
+                return produto;
+            }
+        }
+
         public IEnumerable<ProdutoLista> TodosProdutos()
         {
             List<ProdutoLista> Produtolist = new List<ProdutoLista>();
@@ -105,6 +131,35 @@ namespace TCM_Supermercado1.Repositorio
                 conexao.Close();
             }
         }
+        public bool EditarProduto(Produto produto)
+        {
+            try
+            {
+                using (var conexao = new MySqlConnection(_conexaoMySQL))
+                {
+                    conexao.Open();
+                    MySqlCommand cmd = new MySqlCommand("Update tb_produto set cod_categoria=@categoria, cnpj=@cnpj, nome_produto=@nome, preco_produto=@preco, descricao_produto=@descricao, quantidade_produto=@quantidade where cod_produto=@codigo;", conexao);
+                    cmd.Parameters.Add("@codigo", MySqlDbType.Int32).Value = produto.cod_produto;
+                    cmd.Parameters.Add("@categoria", MySqlDbType.Int32).Value = produto.cod_categoria;
+                    cmd.Parameters.Add("@cnpj", MySqlDbType.VarChar).Value = produto.cnpj;
+                    cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = produto.nome_produto;
+                    cmd.Parameters.Add("@descricao", MySqlDbType.VarChar).Value = produto.descricao_produto;
+                    cmd.Parameters.Add("@preco", MySqlDbType.Decimal).Value = produto.preco_produto;
+                    cmd.Parameters.Add("@quantidade", MySqlDbType.Int32).Value = produto.quantidade_produto;
+
+                    int linhasAfetadas = cmd.ExecuteNonQuery();
+                    return linhasAfetadas > 0;
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                Console.WriteLine($"Erro ao atualizar produto: {ex.Message}");
+                return false;
+
+            }
+        }
+
         public void Excluir(int Id)
         {
             using (var conexao = new MySqlConnection(_conexaoMySQL))

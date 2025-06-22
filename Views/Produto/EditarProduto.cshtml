@@ -1,0 +1,62 @@
+﻿@model TCM_Supermercado1.Models.Produto
+
+@{
+    ViewData["Title"] = "Cadastrar Produto";
+}
+
+<h2>Cadastrar Produto</h2>
+
+<form asp-action="EditarProduto" method="post">
+
+    <div class="form-group">
+        <input type=hidden asp-for="cod_produto" class="form-control" />
+        <span asp-validation-for="cod_produto" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="cod_categoria" class="control-label">Categoria</label>
+        <select asp-for="cod_categoria" class="form-control" asp-items="@(ViewBag.Categorias as SelectList)">
+            <option value="">-- Selecione uma categoria --</option>
+        </select>
+        <span asp-validation-for="cod_categoria" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="cnpj" class="control-label">Fornecedor</label>
+        <select asp-for="cnpj" class="form-control" asp-items="@(ViewBag.Fornecedores as SelectList)">
+            <option value="">-- Selecione um fornecedor --</option>
+        </select>
+        <span asp-validation-for="cnpj" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="nome_produto" class="control-label"></label>
+        <input asp-for="nome_produto" class="form-control" />
+        <span asp-validation-for="nome_produto" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="preco_produto" class="control-label"></label>
+        <input asp-for="preco_produto" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="preco_produto" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="descricao_produto" class="control-label"></label>
+        <textarea asp-for="descricao_produto" class="form-control"></textarea>
+        <span asp-validation-for="descricao_produto" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="quantidade_produto" class="control-label"></label>
+        <input asp-for="quantidade_produto" class="form-control" type="number" />
+        <span asp-validation-for="quantidade_produto" class="text-danger"></span>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <p>
+            <a asp-controller="Produto" asp-action="Index" id="btnLogin">Voltar</a>
+        </p>
+    </div>
+
+</form>
