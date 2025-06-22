@@ -4,7 +4,7 @@
     ViewData["Title"] = "Recuperar Senha";
 }
 <!--Conexões-->
-<link href="~/css/recuperar.css" rel="stylesheet" />
+<link href="~/css/recuperar.css" rel="stylesheet"/>
 <script src="~/js/site.js"></script>
 
 <div class="text-center">
@@ -15,15 +15,16 @@
     <section class="Recuperar">
         <form asp-action="RecuperarSenha" method="post" class="login-form">
         <h2>Digite seus dados</h2>
-        <div id=digito>
-                <input name="email" type="email" class="form-control" placeholder="Email cadastrado" required>
+        <div>
+                <input name="email" type="email" id=email placeholder="Email cadastrado" required>
                 <span asp-validation-for="email_funcionario" class="text-danger"></span>
         </div>
+     
         <div>
-            <input type="submit" value="Recuperar senha">
-            <br>
+            <input type="submit" id=recuperar value="Recuperar senha">
+            
             <p>
-                <a asp-controller="Login" asp-action="Login" id="btnLogin">Retornar a login</a>
+                <a asp-controller="Login" asp-action="Login" id=btnLogin>Retornar a login</a>
             </p>
         </div>
         </form>

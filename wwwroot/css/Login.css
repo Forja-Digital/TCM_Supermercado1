@@ -5,7 +5,8 @@ body {
 
 .display-4{
     color:darkorange;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family:Arial;
+  
 }
 
 .Login {
@@ -18,11 +19,16 @@ body {
     margin:auto;
 }
 
-#digito{
+#informacoes{
     padding: 10px;
 }
 
+#btnCadastro{
+    color:white;
+    background-color:seagreen;
+    border-color:seagreen;
+}
+
 #btnRecuperar{
-    background-color:white;
-    color:peru;
+    color:blue;
 }
