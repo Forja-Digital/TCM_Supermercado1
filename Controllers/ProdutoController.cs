@@ -24,5 +24,20 @@ namespace TCM_Supermercado1.Controllers
             ViewBag.Fornecedores = new SelectList(_produtoRepositorio.TodosFornecedores(), "cnpj", "nome_fornecedor");
             return View();
         }
+
+        [HttpPost]
+        public IActionResult CadastrarProduto(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                _produtoRepositorio.Cadastrar(produto); 
+                return RedirectToAction("Index"); 
+            }
+
+            ViewBag.Categorias = new SelectList(_produtoRepositorio.TodasCategorias(), "cod_categoria", "nome_categoria");
+            ViewBag.Fornecedores = new SelectList(_produtoRepositorio.TodosFornecedores(), "cnpj", "nome_fornecedor");
+            return View(produto);
+        }
+
     }
 }

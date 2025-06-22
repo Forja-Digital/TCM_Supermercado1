@@ -6,7 +6,7 @@
 
 <h2>Cadastrar Produto</h2>
 
-<form asp-action="Cadastrar" method="post">
+<form asp-action="CadastrarProduto" method="post">
 
     <div class="form-group">
         <label asp-for="cod_categoria" class="control-label">Categoria</label>
@@ -47,6 +47,11 @@
         <input asp-for="quantidade_produto" class="form-control" type="number" />
         <span asp-validation-for="quantidade_produto" class="text-danger"></span>
     </div>
-
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <p>
+            <a asp-controller="Produto" asp-action="Index" id="btnLogin">Voltar</a>
+        </p>
+    </div>
+    
 </form>

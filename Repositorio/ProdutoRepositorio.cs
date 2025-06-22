@@ -88,5 +88,23 @@ namespace TCM_Supermercado1.Repositorio
                 return categoriaList;
             }
         }
+
+        public void Cadastrar(Produto produto)
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("insert into tb_produto values (null, @categoria, @cnpj, @nome, @preco, @descricao, @quantidade)", conexao);
+                cmd.Parameters.Add("@categoria", MySqlDbType.Int32).Value = produto.cod_categoria;
+                cmd.Parameters.Add("@cnpj", MySqlDbType.VarChar).Value = produto.cnpj;
+                cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = produto.nome_produto;
+                cmd.Parameters.Add("@preco", MySqlDbType.Double).Value = produto.preco_produto;
+                cmd.Parameters.Add("@descricao", MySqlDbType.VarChar).Value = produto.descricao_produto;
+                cmd.Parameters.Add("@quantidade", MySqlDbType.Int32).Value = produto.quantidade_produto;
+                cmd.ExecuteNonQuery();
+                conexao.Close();
+            }
+        }
+
     }
 }
