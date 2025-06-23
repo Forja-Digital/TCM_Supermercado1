@@ -4,7 +4,8 @@
     ViewData["Title"] = "Cadastra Produto";
 }
 <link href="~/css/cadastro.css" rel="stylesheet" />
-<h2 id=paragrafo>Cadastrar Produto</h2>
+
+<h2 id="paragrafo">Cadastrar Produto</h2>
 
 <form asp-action="CadastrarProduto" method="post" class="menu">
 
@@ -44,15 +45,18 @@
 
     <div class="form-group">
         <label asp-for="quantidade_produto" class="control-label"></label>
-        <input asp-for="quantidade_produto" class="form-control" type="number"/>
+        <input asp-for="quantidade_produto" class="form-control" type="number" />
         <span asp-validation-for="quantidade_produto" class="text-danger"></span>
     </div>
-   
-    
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </div>
+
 </form>
+
 <div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-    <p id=botao>
+    <p id="botao">
         <a asp-controller="Produto" asp-action="Index">Voltar</a>
     </p>
 </div>

@@ -43,7 +43,7 @@ namespace TCM_Supermercado1.Repositorio
             using (var conexao = new MySqlConnection(_conexaoMySQL))
             {
                 conexao.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT t1.cod_produto, t2.nome_categoria, t3.nome_fornecedor, t1.nome_produto, t1.preco_produto, t1.descricao_produto, t1.quantidade_produto FROM tb_produto t1 INNER JOIN tb_categoriaProd t2 ON t1.cod_categoria = t2.cod_categoria INNER JOIN tb_fornecedor t3 ON t1.cnpj = t3.cnpj;", conexao);
+                MySqlCommand cmd = new MySqlCommand("SELECT t1.cod_produto, t2.nome_categoria, t3.nome_fornecedor, t1.nome_produto, t1.preco_produto, t1.descricao_produto, t1.quantidade_produto FROM tb_produto t1 INNER JOIN tb_categoriaProd t2 ON t1.cod_categoria = t2.cod_categoria INNER JOIN tb_fornecedor t3 ON t1.cnpj = t3.cnpj where t1.ativo_produto=true;", conexao);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -191,7 +191,7 @@ namespace TCM_Supermercado1.Repositorio
             using (var conexao = new MySqlConnection(_conexaoMySQL))
             {
                 conexao.Open();
-                MySqlCommand cmd = new MySqlCommand("insert into tb_produto values (null, @categoria, @cnpj, @nome, @preco, @descricao, @quantidade)", conexao);
+                MySqlCommand cmd = new MySqlCommand("insert into tb_produto (cod_categoria, cnpj, nome_produto, preco_produto, descricao_produto, quantidade_produto) values (@categoria, @cnpj, @nome, @preco, @descricao, @quantidade)", conexao);
                 cmd.Parameters.Add("@categoria", MySqlDbType.Int32).Value = produto.cod_categoria;
                 cmd.Parameters.Add("@cnpj", MySqlDbType.VarChar).Value = produto.cnpj;
                 cmd.Parameters.Add("@nome", MySqlDbType.VarChar).Value = produto.nome_produto;
@@ -261,7 +261,7 @@ namespace TCM_Supermercado1.Repositorio
             {
 
                 conexao.Open();
-                MySqlCommand cmd = new MySqlCommand("delete from tb_produto where cod_produto=@codigo", conexao);
+                MySqlCommand cmd = new MySqlCommand("update tb_produto set ativo_produto = FALSE where cod_produto = @codigo;", conexao);
                 cmd.Parameters.AddWithValue("@codigo", Id);
                 int i = cmd.ExecuteNonQuery();
                 conexao.Close();

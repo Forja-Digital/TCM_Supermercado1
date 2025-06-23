@@ -1,4 +1,7 @@
+wwwroot\css\Cadastro.css
 wwwroot\css\Login.css
+wwwroot\css\Pedido.css
+wwwroot\css\Produto.css
 wwwroot\css\Recuperar.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
