@@ -1,6 +1,5 @@
-﻿/*Corpo do site*/
-body {
-    background-color: #FFF7E7;    
+﻿body {
+    background-color: #ffefd5;
 }
 
 .display-4{
@@ -21,12 +20,6 @@ body {
 
 #informacoes{
     padding: 10px;
-}
-
-#btnCadastro{
-    color:white;
-    background-color:seagreen;
-    border-color:seagreen;
 }
 
 #btnRecuperar{

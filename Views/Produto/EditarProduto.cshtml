@@ -3,10 +3,10 @@
 @{
     ViewData["Title"] = "Cadastrar Produto";
 }
+<link href="~/css/produto.css" rel="stylesheet" />
+<h2 id=paragrafo>Atualizar Produto</h2>
 
-<h2>Cadastrar Produto</h2>
-
-<form asp-action="EditarProduto" method="post">
+<form asp-action="EditarProduto" method="post" class="menu">
 
     <div class="form-group">
         <input type=hidden asp-for="cod_produto" class="form-control" />
@@ -52,11 +52,11 @@
         <input asp-for="quantidade_produto" class="form-control" type="number" />
         <span asp-validation-for="quantidade_produto" class="text-danger"></span>
     </div>
-    <div>
-        <button type="submit" class="btn btn-primary">Atualizar</button>
-        <p>
-            <a asp-controller="Produto" asp-action="Index" id="btnLogin">Voltar</a>
-        </p>
-    </div>
+   
 
 </form>
+
+<div class="d-flex gap-2">
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+    <a asp-controller="Produto" asp-action="Index" class="btn btn-primary">Voltar</a>
+</div>

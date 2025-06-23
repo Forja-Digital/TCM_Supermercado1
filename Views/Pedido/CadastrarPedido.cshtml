@@ -3,10 +3,11 @@
 @{
     ViewData["Title"] = "Novo Pedido";
 }
+<link href="~/css/pedido.css" rel="stylesheet" />
 
-<h2 class="mb-4">Novo Pedido</h2>
+<h2 id=paragrafo>Novo Pedido</h2>
 
-<form asp-action="CadastrarPedido" method="post">
+<form asp-action="CadastrarPedido" method="post" class="menu">
     <div class="row">
         <div class="col-md-6 mb-3">
             <label class="form-label">Funcionário</label>
@@ -49,8 +50,8 @@
 
     <h4 class="mt-4">Produtos</h4>
 
-    <table class="table table-bordered table-hover mt-3">
-        <thead class="table-light">
+    <table class="table table-bordered table-hover mt-3 bg-white">
+        <thead class="table-light ">
             <tr>
                 <th scope="col">Selecionar</th>
                 <th scope="col">Produto</th>
@@ -79,6 +80,8 @@
         </tbody>
     </table>
 
-    <button type="submit" class="btn btn-success mt-3">Cadastrar Pedido</button>
-    <a asp-controller="Pedido" asp-action="Index" class="btn btn-primary">Voltar</a>
 </form>
+<div class="d-flex gap-2 mt-3">
+    <button type="submit" class="btn btn-success">Cadastrar Pedido</button>
+    <a asp-controller="Pedido" asp-action="Index" class="btn btn-primary">Voltar</a>
+</div>

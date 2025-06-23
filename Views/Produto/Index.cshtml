@@ -1,12 +1,7 @@
 ﻿@model IEnumerable<TCM_Supermercado1.Models.ProdutoLista>
 
-<p>
-    <a asp-controller="Produto" asp-action="CadastrarProduto" class="btn btn-primary">Cadastrar Produto</a>
-</p>
-<p>
-    <a asp-controller="Pedido" asp-action="Index" class="btn btn-primary">Visualisar pedidos</a>
-</p>
-<table class="table custom-table">
+<link href="~/css/produto.css" rel="stylesheet" />
+<table class="table custom-table bg-white">
     <thead>
         <tr>
             <th>
@@ -72,3 +67,8 @@
 
     </tbody>
 </table>
+
+<p>
+    <a asp-controller="Produto" asp-action="CadastrarProduto" class="btn btn-primary">Cadastrar Produto</a>
+    <a asp-controller="Pedido" asp-action="Index" class="btn btn-primary">Visualisar pedidos</a>
+</p>

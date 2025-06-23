@@ -1,0 +1,16 @@
+﻿body {
+    background-color: #ffefd5;
+}
+
+#paragrafo{
+    font-family:Arial;
+    color:darkorange;
+}
+.menu {
+    color: white;
+    background-color: seagreen;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+}
