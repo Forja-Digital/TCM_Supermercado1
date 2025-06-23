@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TCM_Supermercado1.Models.PedidoLista>
+
+@{
+    ViewBag.Title = "Pedidos";
+}
+
+<h2>Lista de Pedidos</h2>
+<p>
+    <a asp-controller="Produto" asp-action="Index" class="btn btn-primary">Voltar</a>
+</p>
+<p>
+    <<a asp-controller="Pedido" asp-action="CadastrarPedido" class="btn btn-primary">Novo Pedido</a>
+</p>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Funcionário</th>
+            <th>Cliente</th>
+            <th>Tipo Pagamento</th>
+            <th>Data do Pedido</th>
+            <th>Total (R$)</th>
+            <th>Estado</th>
+            <th>Endereço</th>
+            <th>Complemento</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pedido in Model)
+        {
+            <tr>
+                <td>@pedido.cod_pedido</td>
+                <td>@pedido.nome_funcionario</td>
+                <td>@pedido.nome_cliente</td>
+                <td>@pedido.tipo_pagamento</td>
+                <td>@pedido.data_pedido.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@pedido.total.ToString("F2")</td>
+                <td>@pedido.estado_uf</td>
+                <td>@pedido.endereco_pedido</td>
+                <td>@pedido.complemento_pedido</td>
+            </tr>
+        }
+    </tbody>
+</table>

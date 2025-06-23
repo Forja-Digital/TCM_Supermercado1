@@ -90,6 +90,53 @@ namespace TCM_Supermercado1.Repositorio
                 return fornecedorList;
             }
         }
+        public IEnumerable<TipoPagamento> TodosTipoPagamento()
+        {
+            List<TipoPagamento> pagamentoList = new List<TipoPagamento>();
+
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT cod_pagamento, tipo_pagamento FROM tb_pagamento", conexao);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    pagamentoList.Add(new TipoPagamento
+                    {
+                        cod_pagamento = Convert.ToInt32(reader["cod_pagamento"]),
+                        tipo_pagamento = reader["tipo_pagamento"].ToString()
+                    });
+                }
+
+                conexao.Close();
+                return pagamentoList;
+            }
+        }
+
+        public IEnumerable<Estado> TodosEstado()
+        {
+            List<Estado> estadoList = new List<Estado>();
+
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT cod_estado, UF FROM tb_estado", conexao);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    estadoList.Add(new Estado
+                    {
+                        cod_estado = Convert.ToInt32(reader["cod_estado"]),
+                        UF = reader["UF"].ToString()
+                    });
+                }
+
+                conexao.Close();
+                return estadoList;
+            }
+        }
 
         public IEnumerable<Categoria> TodasCategorias()
         {
@@ -112,6 +159,30 @@ namespace TCM_Supermercado1.Repositorio
 
                 conexao.Close();
                 return categoriaList;
+            }
+        }
+
+        public IEnumerable<Cliente> TodosClientes()
+        {
+            List<Cliente> clienteList = new List<Cliente>();
+
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT cod_cliente, nome_cliente FROM tb_cliente", conexao);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    clienteList.Add(new Cliente
+                    {
+                        cod_cliente = Convert.ToInt32(reader["cod_cliente"]),
+                        nome_cliente = reader["nome_cliente"].ToString()
+                    });
+                }
+
+                conexao.Close();
+                return clienteList;
             }
         }
 
@@ -157,6 +228,30 @@ namespace TCM_Supermercado1.Repositorio
                 Console.WriteLine($"Erro ao atualizar produto: {ex.Message}");
                 return false;
 
+            }
+        }
+        
+        public IEnumerable<Funcionario> TodosFuncionarios()
+        {
+          List<Funcionario> funcionarioList = new List<Funcionario>();
+
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT cod_funcionario, nome_funcionario FROM tb_funcionario", conexao);
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    funcionarioList.Add(new Funcionario
+                    {
+                        cod_funcionario = Convert.ToInt32(reader["cod_funcionario"]),
+                        nome_funcionario = reader["nome_funcionario"].ToString()
+                    });
+                }
+
+                conexao.Close();
+                return funcionarioList;
             }
         }
 

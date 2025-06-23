@@ -1,0 +1,84 @@
+﻿@model IEnumerable<TCM_Supermercado1.Models.ProdutoLista>
+
+@{
+    ViewData["Title"] = "Novo Pedido";
+}
+
+<h2 class="mb-4">Novo Pedido</h2>
+
+<form asp-action="CadastrarPedido" method="post">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Funcionário</label>
+            <select name="cod_funcionario" class="form-select" asp-items="ViewBag.Funcionarios">
+                <option value="">-- Selecione um funcionário --</option>
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Cliente</label>
+            <select name="cod_cliente" class="form-select" asp-items="ViewBag.Clientes">
+                <option value="">-- Selecione um cliente --</option>
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Forma de Pagamento</label>
+            <select name="cod_pagamento" class="form-select" asp-items="ViewBag.Pagamentos">
+                <option value="">-- Selecione uma forma de pagamento --</option>
+            </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Estado</label>
+            <select name="cod_estado" class="form-select" asp-items="ViewBag.Estados">
+                <option value="">-- Selecione um estado --</option>
+            </select>
+        </div>
+
+        <div class="col-md-8 mb-3">
+            <label class="form-label">Endereço</label>
+            <input name="endereco_pedido" class="form-control" required />
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <label class="form-label">Complemento</label>
+            <input name="complemento_pedido" class="form-control" required />
+        </div>
+    </div>
+
+    <h4 class="mt-4">Produtos</h4>
+
+    <table class="table table-bordered table-hover mt-3">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">Selecionar</th>
+                <th scope="col">Produto</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Fornecedor</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="produtosSelecionados" value="@p.cod_produto" class="form-check-input" />
+                    </td>
+                    <td>@p.nome_produto</td>
+                    <td>@p.nome_categoria</td>
+                    <td>@p.nome_fornecedor</td>
+                    <td>R$ @p.preco_produto?.ToString("F2")</td>
+                    <td style="max-width: 100px;">
+                        <input type="number" name="quantidade_@p.cod_produto" value="1" min="1" class="form-control" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-success mt-3">Cadastrar Pedido</button>
+    <a asp-controller="Pedido" asp-action="Index" class="btn btn-primary">Voltar</a>
+</form>

@@ -9,6 +9,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<LoginRepositorio>();
 builder.Services.AddScoped<ProdutoRepositorio>();
+builder.Services.AddScoped<PedidoRepositorio>();
 
 var app = builder.Build();
 
